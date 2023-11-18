@@ -44,6 +44,15 @@ export default create(subscribeWithSelector((set) =>
             }, 1500)
         },
 
-        playerPosition: new Vector3(0, 1, 0)
+        playerPosition: new Vector3(0, 1, 0),
+        playerKey: 1,
+        resetPlayer: () =>
+        {
+            set((state) =>
+            {
+                return { playerKey: state.playerKey + 1 }
+            })
+        }
+
     }
 }))

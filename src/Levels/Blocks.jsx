@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import Block from './Block'
-import useGame from './stores/useGame'
+import useGame from '../stores/useGame'
 
-export default function Blocks({ positions = [] })
+export default function Blocks({ goods = [], bads = [] })
 {
-    const totalCount = positions.length
+    const totalCount = goods.length
     const [ visitedCount, setVisitedCount ] = useState(0)
-    const [ status, finishLevel ] = useGame(state => [ state.status, state.finishLevel ])
+    const [ status, finishLevel, resetPlayer ] = useGame(state => [ state.status, state.finishLevel, state.resetPlayer ])
 
     const onBlockVisited = () =>
     {
@@ -23,12 +23,21 @@ export default function Blocks({ positions = [] })
 
     return <>
     
-        { positions.map((position, index) =>
+        { goods.map((item, index) =>
             <Block
                 key={ index }
                 onVisited={ onBlockVisited }
                 finished={ status === 'finishing' || status === 'finished' }
-                position={ position }
+                position={ item }
+            />
+        ) }
+    
+        { bads.map((item, index) =>
+            <Block
+                key={ index }
+                onVisited={ resetPlayer }
+                position={ item }
+                bad={ true }
             />
         ) }
         

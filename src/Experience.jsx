@@ -5,7 +5,7 @@ import { Perf } from 'r3f-perf'
 import Effects from './Effects/Effects.jsx'
 import Player from './Player.jsx'
 import { useControls } from 'leva'
-import Levels from './Levels.jsx'
+import Levels from './Levels/Levels.jsx'
 import './Materials/Materials.jsx'
 import useGame from './stores/useGame.jsx'
 import { useEffect } from 'react'
@@ -27,7 +27,7 @@ export default function Experience()
     }, [])
 
     return <>
-
+    
         <Effects />
 
         <color args={ [ '#111111' ] } attach="background" />

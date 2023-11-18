@@ -1,16 +1,18 @@
 import { useControls } from 'leva'
 import { useEffect, useRef, useState } from 'react'
-import useGame from './stores/useGame'
-import { useFrame, useThree } from '@react-three/fiber'
+import useGame from '../stores/useGame'
+import { useFrame } from '@react-three/fiber'
 
-export default function Block({ finished = false, onVisited = null, position = [ 0, 0, 0 ] })
+export default function Block({ bad = false, finished = false, onVisited = null, position = [ 0, 0, 0 ] })
 {
     const playerPosition = useGame(state => state.playerPosition)
     const [ visited, setVisited ] = useState(false)
     const material = useRef()
     const settings = useControls('blocks', {
-        toVisiteColor: { value: '#db8d65' },
-        toVisiteIntensity: { value: 4.5, min: 0, max: 20, step: 0.1 },
+        toVisiteColor: { value: '#29a7ff' },
+        toVisiteIntensity: { value: 5, min: 0, max: 20, step: 0.1 },
+        badColor: { value: '#ff5c5c' },
+        badIntensity: { value: 5.5, min: 0, max: 20, step: 0.1 },
         visitedColor: { value: '#6b65db' },
         visitedIntensity: { value: 10, min: 0, max: 20, step: 0.1 },
         finishedColor: { value: '#c3ff87' },
@@ -21,14 +23,18 @@ export default function Block({ finished = false, onVisited = null, position = [
     {
         let color = settings.toVisiteColor
 
-        if(finished)
+        if(bad)
+            color = settings.badColor
+        else if(finished)
             color = settings.finishedColor
         else if(visited)
             color = settings.visitedColor
             
         let intensity = settings.toVisiteIntensity
 
-        if(finished)
+        if(bad)
+            intensity = settings.badIntensity
+        else if(finished)
             intensity = settings.finishedIntensity
         else if(visited)
             intensity = settings.visitedIntensity
@@ -47,7 +53,11 @@ export default function Block({ finished = false, onVisited = null, position = [
             
             if(upDistance > 0 && upDistance < 1.5)
             {
-                if(!visited)
+                if(bad)
+                {
+                    onVisited()
+                }
+                else if(!visited)
                 {
                     onVisited()
                     setVisited(true)

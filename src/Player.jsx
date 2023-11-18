@@ -8,7 +8,7 @@ export default function Player()
 {
     const ref = useRef()
 
-    const [ playerPosition, levelIndex ] = useGame(state => [ state.playerPosition, state.levelIndex ])
+    const [ playerPosition, playerKey, levelIndex ] = useGame(state => [ state.playerPosition, state.playerKey, state.levelIndex ])
 
     useFrame(() =>
     {
@@ -29,7 +29,7 @@ export default function Player()
         ref.current.setAngvel({ x: 0, y: 0, z: 0 })
     }
 
-    useEffect(reset, [ levelIndex ])
+    useEffect(reset, [ levelIndex, playerKey ])
 
     return <KeyboardControls
         map={ [
