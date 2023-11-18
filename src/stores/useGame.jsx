@@ -41,7 +41,7 @@ export default create(subscribeWithSelector((set) =>
                         status: 'playing'
                     }
                 })
-            }, 1300)
+            }, 1500)
         },
 
         playerPosition: new Vector3(0, 1, 0)

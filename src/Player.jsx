@@ -53,8 +53,9 @@ export default function Player()
             debug={ true }
             capsuleRadius={ 0.4 }
             
-            camInitDis={ - 8 }
-            camMaxDis={ - 15 }
+            camInitDis={ - 14 }
+            camMaxDis={ - 25 }
+            camInitDir={ Math.PI }
 
             maxVelLimit={ 5 }
             turnVelMultiplier={ 1 }
