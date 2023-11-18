@@ -2,10 +2,12 @@ import { Text } from '@react-three/drei'
 import Blocks from './Blocks.jsx'
 import Floor from './Floor.jsx'
 import useGame from './stores/useGame.jsx'
+import { RigidBody } from '@react-three/rapier'
+import { BackSide, FrontSide } from 'three'
 
-function LevelText({ index = 1, instructions = "" })
+function LevelText({ index = 1, instructions = "", position = [ 0, 0.01, 3.5 ] })
 {
-    return <group position={ [ 0, 0.01, 1 ] }>
+    return <group position={ position }>
         <Text
             position={ [ 0, 0, - 0.25 ] }
             rotation-x={ - Math.PI * 0.5 }
@@ -92,14 +94,20 @@ function Level2()
     return <>
         <LevelText
             index="3"
-            instructions="I'm sure you get it now"
+            instructions="You can jump?!"
         />
         <Floor size={ 10 } />
         <Blocks
             positions={ [
-                [ 2, 0.05, 0 ],
+                [ 0, 1.05, - 2 ],
             ] }
         />
+        <RigidBody type="fixed">
+            <mesh scale={ [ 3, 1, 3 ] } position={ [ 0, 0.5, - 2 ] } castShadow receiveShadow>
+                <boxGeometry args={ [ 1, 1, 1 ] } />
+                <meshLambertMaterial shadowSide={ FrontSide } color="#2a2a2a" />
+            </mesh>
+        </RigidBody>
     </>
 }
 

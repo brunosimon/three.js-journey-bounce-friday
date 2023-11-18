@@ -8,13 +8,13 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "4.1",
-    "vite": "^4.5.0"
+    "@vitejs/plugin-react": "4.2",
+    "vite": "^5.0.0"
   },
   "dependencies": {
-    "@react-three/drei": "^9.88.7",
-    "@react-three/fiber": "^8.15.8",
-    "@react-three/postprocessing": "^2.15.8",
+    "@react-three/drei": "^9.88.16",
+    "@react-three/fiber": "^8.15.11",
+    "@react-three/postprocessing": "^2.15.11",
     "@react-three/rapier": "^1.1.2",
     "animejs": "^3.2.1",
     "ecctrl": "^1.0.42",

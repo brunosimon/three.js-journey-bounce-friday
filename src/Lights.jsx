@@ -42,13 +42,14 @@ export default function Lights()
                 ref={ (ref) => { lights.current[key] = ref } }
                 position={ [ position.x, position.y, position.z ] }
                 intensity={ directionalSettings.intensity / lightsCount }
-                shadow-mapSize={ 256 / Math.pow(2, key) }
+                shadow-mapSize={ 128 / Math.pow(2, key) }
                 shadow-camera-near={ 1 }
                 shadow-camera-far={ 10 }
                 shadow-camera-top={ 5 }
                 shadow-camera-right={ 5 }
                 shadow-camera-bottom={ - 5 }
                 shadow-camera-left={ - 5 }
+                shadow-bias={ - 0.01 }
                 color={ directionalSettings.color }
             />
         }) }

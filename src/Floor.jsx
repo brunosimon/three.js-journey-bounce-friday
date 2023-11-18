@@ -4,7 +4,7 @@ import { useControls } from "leva"
 export default function Floor({ size = 10 })
 {
     const settings = useControls('floor', {
-        color: { value: '#212121' },
+        color: { value: '#2a2a2a' },
     })
 
     return <RigidBody type="fixed">

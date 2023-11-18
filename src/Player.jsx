@@ -1,8 +1,8 @@
-import { KeyboardControls } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { KeyboardControls } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 import Ecctrl from 'ecctrl'
-import { useEffect, useRef } from 'react';
-import useGame from './stores/useGame';
+import { useEffect, useRef } from 'react'
+import useGame from './stores/useGame'
 
 export default function Player()
 {
@@ -24,7 +24,7 @@ export default function Player()
 
     const reset = () =>
     {
-        ref.current.setTranslation({ x: 0, y: 1, z: 0 })
+        ref.current.setTranslation({ x: 0, y: 1, z: 2 })
         ref.current.setLinvel({ x: 0, y: 0, z: 0 })
         ref.current.setAngvel({ x: 0, y: 0, z: 0 })
     }
