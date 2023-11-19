@@ -67,6 +67,8 @@ export default function Player()
             dragDampingC={ 0.15 }
 
             autoBalance={ false }
+
+            camCollisionOffset={ 100 }
         >
             <mesh position-y={ 0 } castShadow>
                 <capsuleGeometry args={ [ 0.4, 0.7, 4, 18 ] } />

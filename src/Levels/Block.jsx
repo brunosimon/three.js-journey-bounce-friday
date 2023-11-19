@@ -2,12 +2,14 @@ import { useControls } from 'leva'
 import { useEffect, useRef, useState } from 'react'
 import useGame from '../stores/useGame'
 import { useFrame } from '@react-three/fiber'
+import Beams from './Beams.jsx'
 
 export default function Block({ bad = false, finished = false, onVisited = null, position = [ 0, 0, 0 ] })
 {
     const playerPosition = useGame(state => state.playerPosition)
     const [ visited, setVisited ] = useState(false)
     const material = useRef()
+    const beams = useRef()
     const settings = useControls('blocks', {
         toVisiteColor: { value: '#29a7ff' },
         toVisiteIntensity: { value: 5, min: 0, max: 20, step: 0.1 },
@@ -41,6 +43,9 @@ export default function Block({ bad = false, finished = false, onVisited = null,
 
         material.current.color.set(color)
         material.current.color.multiplyScalar(intensity)
+
+        // console.log(beams.current.material.uniforms.color)
+        beams.current.material.uniforms.color.value.copy(material.current.color)
     }, [ finished, visited, settings ])
 
     useFrame(() =>
@@ -66,12 +71,10 @@ export default function Block({ bad = false, finished = false, onVisited = null,
         }
     })
 
-    return <>
-    
-        <mesh position={ position }>
-            <boxGeometry args={ [ 1, 0.1, 1 ] } />
-            <meshBasicMaterial ref={ material } toneMapped={ false } />
-        </mesh>
+    return <mesh position={ position }>
+        <boxGeometry args={ [ 1, 0.1, 1 ] } />
+        <meshBasicMaterial ref={ material } />
 
-    </>
+        <Beams ref={ beams } />
+    </mesh>
 }
