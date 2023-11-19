@@ -1,14 +1,20 @@
 import { EcctrlJoystick } from 'ecctrl'
 import { useMemo } from 'react'
 import { BoxGeometry, CylinderGeometry, Euler, MeshBasicMaterial, SphereGeometry, Vector3 } from 'three'
+import useGame from './stores/useGame.jsx'
 
 export default function TouchControls()
 {
+    const [ isTouch ] = useGame(state => [ state.isTouch ])
+
     const cylinderGeometry = useMemo(() => new CylinderGeometry(2.3, 2.1, 0.3, 32, 1), [])
     const sphereGeometry = useMemo(() => new SphereGeometry(1.4, 32, 8), [])
     const boxGeometry = useMemo(() => new BoxGeometry(1, 1, 1), [])
     const activeMaterial = useMemo(() => new MeshBasicMaterial({ color: 0xffffff, wireframe: false }), [])
     const passiveMaterial = useMemo(() => new MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 }), [])
+
+    if(!isTouch)
+        return null
 
     return <EcctrlJoystick
         joystickBaseProps={{

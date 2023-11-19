@@ -5,36 +5,32 @@ import { subscribeWithSelector } from 'zustand/middleware'
 export default create(subscribeWithSelector((set) =>
 {
     return {
-        status: 'loading', // Loading | playing | finishing | finished
+
+        status: 'intro', // intro | loading | playing | finishing | finished
         setStatus: (status) =>
         {
-            set((state) =>
-            {
-                return { status }
-            })
+            set(state => ({ status }))
+        },
+
+        isTouch: false,
+        setIsTouch: (isTouch) =>
+        {
+            set(state => ({ isTouch }))
         },
 
         levelIndex: 0,
         finishLevel: () =>
         {
-            set((state) =>
-            {
-                return { status: 'finishing' }
-            })
+            set(state => ({ status: 'finishing' }))
 
             setTimeout(() =>
             {
-                set((state) =>
-                {
-                    return {
-                        status: 'finished'
-                    }
-                })
+                set(state => ({ status: 'finished' }))
             }, 1000)
 
             setTimeout(() =>
             {
-                set((state) =>
+                set(state =>
                 {
                     return {
                         levelIndex: state.levelIndex + 1,
@@ -48,10 +44,7 @@ export default create(subscribeWithSelector((set) =>
         playerKey: 1,
         resetPlayer: () =>
         {
-            set((state) =>
-            {
-                return { playerKey: state.playerKey + 1 }
-            })
+            set(state => ({ playerKey: state.playerKey + 1 }))
         }
 
     }

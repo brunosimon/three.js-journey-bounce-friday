@@ -16,23 +16,13 @@ export default function Experience()
         debug: { value: false },
     })
 
-    const [ setStatus ] = useGame(state => [ state.setStatus ])
-    
-    useEffect(() =>
-    {
-        setTimeout(() =>
-        {
-            setStatus('started')
-        }, 100)
-    }, [])
-
     return <>
     
         <Effects />
 
         <color args={ [ '#111111' ] } attach="background" />
 
-        {/* <Perf position="top-left" /> */}
+        <Perf position="top-left" />
 
         <Physics timeStep="vary" debug={ physicsSettings.debug } gravity={ [ 0, - 9.807 * 2, 0 ] }>
             <Lights />
