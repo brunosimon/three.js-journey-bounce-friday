@@ -50,12 +50,16 @@ export default function Player()
         <Ecctrl
             ref={ ref }
             position={ [ 0, 1, - 2 ] }
-            debug={ true }
+            debug={ false }
             capsuleRadius={ 0.4 }
             
-            camInitDis={ - 14 }
+            camInitDis={ - 20 }
             camMaxDis={ - 25 }
-            camInitDir={ Math.PI }
+
+            camInitDir={{ x: - 0.5, y: Math.PI, z: 0 }}
+            camTargetPos={{ x: 0, y: 0, z: 0 }}
+            camCollision={ false }
+
 
             maxVelLimit={ 5 }
             turnVelMultiplier={ 1 }

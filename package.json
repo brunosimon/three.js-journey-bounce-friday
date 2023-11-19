@@ -17,7 +17,7 @@
     "@react-three/postprocessing": "^2.15.11",
     "@react-three/rapier": "^1.1.2",
     "animejs": "^3.2.1",
-    "ecctrl": "^1.0.42",
+    "ecctrl": "^1.0.45",
     "leva": "^0.9.35",
     "r3f-perf": "^7.1.2",
     "react": "18.2",

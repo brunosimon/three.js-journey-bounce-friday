@@ -44,8 +44,8 @@ export default function Block({ bad = false, finished = false, onVisited = null,
         material.current.color.set(color)
         material.current.color.multiplyScalar(intensity)
 
-        // console.log(beams.current.material.uniforms.color)
-        beams.current.material.uniforms.color.value.copy(material.current.color)
+        if(beams.current)
+            beams.current.material.uniforms.color.value.copy(material.current.color)
     }, [ finished, visited, settings ])
 
     useFrame(() =>
@@ -75,6 +75,6 @@ export default function Block({ bad = false, finished = false, onVisited = null,
         <boxGeometry args={ [ 1, 0.1, 1 ] } />
         <meshBasicMaterial ref={ material } />
 
-        <Beams ref={ beams } />
+        { !bad && <Beams ref={ beams } /> }
     </mesh>
 }

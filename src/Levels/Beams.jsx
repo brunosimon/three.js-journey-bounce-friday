@@ -1,6 +1,6 @@
 import { useFrame } from '@react-three/fiber'
 import { forwardRef, useRef } from 'react'
-import { BufferAttribute, DoubleSide, Float32BufferAttribute, PlaneGeometry } from 'three'
+import { BufferAttribute, DoubleSide, PlaneGeometry } from 'three'
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 
 const geometries = []
@@ -27,7 +27,7 @@ for(let i = 0; i < 15; i++)
 
     geometries.push(geometry)
 }
-const beamsGeometry = BufferGeometryUtils.mergeBufferGeometries(geometries)
+const beamsGeometry = BufferGeometryUtils.mergeGeometries(geometries)
 
 export default forwardRef(function Beams({ color = 'red' }, ref)
 {

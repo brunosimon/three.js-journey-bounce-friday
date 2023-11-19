@@ -5,6 +5,8 @@ import Experience from './Experience.jsx'
 import { KeyboardControls } from '@react-three/drei'
 import Interface from './Interface.jsx'
 import { Suspense } from 'react'
+import TouchControls from './TouchControls.jsx'
+
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
@@ -18,6 +20,7 @@ root.render(
             { name: 'jump', keys: [ 'Space' ] },
         ] }
     >
+        <TouchControls />
         <Canvas
             shadows
             camera={ {

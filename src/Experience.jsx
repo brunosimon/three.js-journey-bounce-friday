@@ -32,7 +32,7 @@ export default function Experience()
 
         <color args={ [ '#111111' ] } attach="background" />
 
-        <Perf position="top-left" />
+        {/* <Perf position="top-left" /> */}
 
         <Physics timeStep="vary" debug={ physicsSettings.debug } gravity={ [ 0, - 9.807 * 2, 0 ] }>
             <Lights />
