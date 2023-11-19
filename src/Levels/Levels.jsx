@@ -88,7 +88,7 @@ export default function Levels()
         Level0,
         Level1,
         Level2,
-        Level3
+        Level3,
     ]
     const LevelConstructor = LevelsConstructors[ levelIndex % LevelsConstructors.length ]
 

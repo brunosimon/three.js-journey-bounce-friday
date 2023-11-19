@@ -3,13 +3,16 @@ import { useEffect, useRef, useState } from 'react'
 import useGame from '../stores/useGame'
 import { useFrame } from '@react-three/fiber'
 import Beams from './Beams.jsx'
+import ShockWave from './ShockWave.jsx'
 
 export default function Block({ bad = false, finished = false, onVisited = null, position = [ 0, 0, 0 ] })
 {
     const playerPosition = useGame(state => state.playerPosition)
     const [ visited, setVisited ] = useState(false)
+    const [ animateKey, setAnimateKey ] = useState(0)
     const material = useRef()
     const beams = useRef()
+    const shockWave = useRef()
     const settings = useControls('blocks', {
         toVisiteColor: { value: '#29a7ff' },
         toVisiteIntensity: { value: 5, min: 0, max: 20, step: 0.1 },
@@ -46,6 +49,9 @@ export default function Block({ bad = false, finished = false, onVisited = null,
 
         if(beams.current)
             beams.current.material.uniforms.color.value.copy(material.current.color)
+
+        if(shockWave.current)
+            shockWave.current.material.uniforms.color.value.copy(material.current.color)
     }, [ finished, visited, settings ])
 
     useFrame(() =>
@@ -61,10 +67,12 @@ export default function Block({ bad = false, finished = false, onVisited = null,
                 if(bad)
                 {
                     onVisited()
+                    setAnimateKey(animateKey => animateKey + 1)
                 }
                 else if(!visited)
                 {
                     onVisited()
+                    setAnimateKey(animateKey => animateKey + 1)
                     setVisited(true)
                 }
             }
@@ -76,5 +84,6 @@ export default function Block({ bad = false, finished = false, onVisited = null,
         <meshBasicMaterial ref={ material } />
 
         { !bad && <Beams ref={ beams } /> }
+        <ShockWave animateKey={ animateKey } ref={ shockWave } />
     </mesh>
 }
