@@ -28,7 +28,8 @@ export default function Blocks({ goods = [], bads = [] })
                 key={ index }
                 onVisited={ onBlockVisited }
                 finished={ status === 'finishing' || status === 'finished' }
-                position={ item }
+                position={ item.position }
+                scale={ item.scale }
             />
         ) }
     
@@ -36,7 +37,8 @@ export default function Blocks({ goods = [], bads = [] })
             <Block
                 key={ index }
                 onVisited={ resetPlayer }
-                position={ item }
+                position={ item.position }
+                scale={ item.scale }
                 bad={ true }
             />
         ) }

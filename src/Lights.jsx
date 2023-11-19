@@ -49,7 +49,7 @@ export default function Lights()
                 shadow-camera-right={ 5 }
                 shadow-camera-bottom={ - 5 }
                 shadow-camera-left={ - 5 }
-                shadow-bias={ - 0.01 }
+                shadow-bias={ - 0.05 }
                 color={ directionalSettings.color }
             />
         }) }

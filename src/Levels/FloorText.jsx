@@ -30,7 +30,7 @@ export default function FloorText({ index = 1, instructions = "", position = [ 0
 
         <mesh
             rotation-x={ - Math.PI * 0.5 }
-            scale={ [ 2, 0.05, 1 ] }
+            scale={ [ 1.25, 0.05, 1 ] }
         >
             <planeGeometry />
             <meshLambertMaterial color="#555555" />

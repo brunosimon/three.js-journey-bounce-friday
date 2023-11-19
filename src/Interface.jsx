@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import useGame from './stores/useGame.jsx'
 
 export default function Interface()
@@ -9,6 +10,12 @@ export default function Interface()
         setStatus('started')
         setIsTouch(event.nativeEvent.pointerType === 'touch')
     }
+
+    // Skip
+    useEffect(() =>
+    {
+        setStatus('started')
+    }, [])
 
     return <div className="interface">
         { status === 'intro' &&

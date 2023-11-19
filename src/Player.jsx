@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import Ecctrl from 'ecctrl'
 import { useEffect, useRef } from 'react'
 import useGame from './stores/useGame'
+import { FrontSide } from 'three'
 
 export default function Player()
 {
@@ -15,7 +16,7 @@ export default function Player()
         if(ref.current)
         {
             const position = ref.current.translation()
-            if(position.y < - 10)
+            if(position.y < - 6)
                 reset()
 
             playerPosition.copy(position)
@@ -76,7 +77,7 @@ export default function Player()
         >
             <mesh position-y={ 0 } castShadow>
                 <capsuleGeometry args={ [ 0.4, 0.7, 4, 18 ] } />
-                <meshLambertMaterial wireframe={ false } />
+                <meshLambertMaterial wireframe={ false } shadowSide={ FrontSide } />
             </mesh>
         </Ecctrl>
     </KeyboardControls>

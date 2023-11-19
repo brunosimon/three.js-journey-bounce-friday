@@ -5,7 +5,7 @@ import { useFrame } from '@react-three/fiber'
 import Beams from './Beams.jsx'
 import ShockWave from './ShockWave.jsx'
 
-export default function Block({ bad = false, finished = false, onVisited = null, position = [ 0, 0, 0 ] })
+export default function Block({ bad = false, finished = false, onVisited = null, position = { x: 0, y: 0, z: 0 } })
 {
     const playerPosition = useGame(state => state.playerPosition)
     const [ visited, setVisited ] = useState(false)
@@ -56,11 +56,11 @@ export default function Block({ bad = false, finished = false, onVisited = null,
 
     useFrame(() =>
     {
-        const flatDistance = Math.hypot(playerPosition.x - position[0], playerPosition.z - position[2])
+        const flatDistance = Math.hypot(playerPosition.x - position.x, playerPosition.z - position.z)
         
         if(flatDistance < 1)
         {
-            const upDistance = playerPosition.y - position[1]
+            const upDistance = playerPosition.y - position.y
             
             if(upDistance > 0 && upDistance < 1.5)
             {
@@ -79,11 +79,13 @@ export default function Block({ bad = false, finished = false, onVisited = null,
         }
     })
 
-    return <mesh position={ position }>
-        <boxGeometry args={ [ 1, 0.1, 1 ] } />
-        <meshBasicMaterial ref={ material } />
+    return <group position={ position }>
+        <mesh position={ [ 0, 0.1, 0 ] }>
+            <boxGeometry args={ [ 1, 0.1, 1 ] } />
+            <meshBasicMaterial ref={ material } />
 
-        { !bad && <Beams ref={ beams } /> }
-        <ShockWave animateKey={ animateKey } ref={ shockWave } />
-    </mesh>
+            { !bad && <Beams ref={ beams } /> }
+            <ShockWave animateKey={ animateKey } ref={ shockWave } />
+        </mesh>
+    </group>
 }

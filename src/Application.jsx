@@ -24,6 +24,7 @@ export default function Application()
         >
             <TouchControls />
             <Canvas
+                flat
                 shadows
                 camera={ {
                     fov: 25,
