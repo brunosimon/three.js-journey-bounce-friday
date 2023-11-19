@@ -98,16 +98,16 @@ export default function Levels()
     const [ levelIndex ] = useGame(state => [ state.levelIndex ])
 
     const settings = [
-        // { modelPath: './levels/0.glb', instructions: 'Walk on the blue square' },
-        // { modelPath: './levels/1.glb', instructions: 'How about multiple squares?' },
-        // { modelPath: './levels/2.glb', instructions: 'That red one looks friendly' },
-        // { modelPath: './levels/3.glb', instructions: 'Let\'s do a little jump' },
-        // { modelPath: './levels/4.glb', instructions: 'I mean… Physics…' },
-        // { modelPath: './levels/5.glb', instructions: 'You get the idea' },
-        // { modelPath: './levels/6.glb', instructions: 'You know you can sprint. Right?' },
-        // { modelPath: './levels/7.glb', instructions: 'Huh?' },
-        // { modelPath: './levels/8.glb', instructions: 'You got this!' },
-        // { modelPath: './levels/9.glb', instructions: 'Think' },
+        { modelPath: './levels/0.glb', instructions: 'Walk on the blue square' },
+        { modelPath: './levels/1.glb', instructions: 'How about multiple squares?' },
+        { modelPath: './levels/2.glb', instructions: 'That red one looks friendly' },
+        { modelPath: './levels/3.glb', instructions: 'Let\'s do a little jump' },
+        { modelPath: './levels/4.glb', instructions: 'I mean… Physics…' },
+        { modelPath: './levels/5.glb', instructions: 'You get the idea' },
+        { modelPath: './levels/6.glb', instructions: 'You know you can sprint. Right?' },
+        { modelPath: './levels/7.glb', instructions: 'Huh?' },
+        { modelPath: './levels/8.glb', instructions: 'You got this!' },
+        { modelPath: './levels/9.glb', instructions: 'Think' },
         { modelPath: './levels/10.glb', instructions: 'Parcour!' },
     ]
 

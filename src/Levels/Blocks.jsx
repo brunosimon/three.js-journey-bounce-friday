@@ -15,10 +15,24 @@ export default function Blocks({ goods = [], bads = [] })
 
     useEffect(() =>
     {
+        let title = ''
+
         if(visitedCount === totalCount)
         {
             finishLevel()
+
+            for(let i = 0; i < totalCount; i++)
+                title += '🟩'
         }
+        else
+        {
+            for(let i = 0; i < visitedCount; i++)
+                title += '🟪'
+            for(let i = visitedCount; i < totalCount; i++)
+                title += '🟦'
+        }
+
+        document.title = title
     }, [ visitedCount ])
 
     return <>
