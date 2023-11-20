@@ -122,3 +122,16 @@ export default function Levels()
         instructions={ setting.instructions }
     />
 }
+
+useGLTF.preload('./levels/0.glb')
+useGLTF.preload('./levels/1.glb')
+useGLTF.preload('./levels/2.glb')
+useGLTF.preload('./levels/3.glb')
+useGLTF.preload('./levels/4.glb')
+useGLTF.preload('./levels/5.glb')
+useGLTF.preload('./levels/6.glb')
+useGLTF.preload('./levels/7.glb')
+useGLTF.preload('./levels/8.glb')
+useGLTF.preload('./levels/9.glb')
+useGLTF.preload('./levels/10.glb')
+useGLTF.preload('./levels/11.glb')
