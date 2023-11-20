@@ -2,10 +2,13 @@ import Blocks from './Blocks.jsx'
 import FloorText from './FloorText.jsx'
 import useGame from '../stores/useGame.jsx'
 import { RigidBody } from '@react-three/rapier'
-import { FrontSide } from 'three'
+import { FrontSide, MeshLambertMaterial } from 'three'
 import { useGLTF } from '@react-three/drei'
 import { useMemo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
+
+const staticMaterial = new MeshLambertMaterial({ color: '#262626', dithering: true, shadowSide: FrontSide })
+const dynamicMaterial = new MeshLambertMaterial({ color: '#3a3a3a', dithering: true, shadowSide: FrontSide })
 
 function Dyamic({ element })
 {
@@ -39,9 +42,12 @@ function Dyamic({ element })
         friction={ 0.75 }
         type="dynamic" colliders="cuboid"
     >
-        <mesh geometry={ element.geometry } castShadow receiveShadow>
-            <meshLambertMaterial dithering shadowSide={ FrontSide } color="#2f2f2f" />
-        </mesh>
+        <mesh
+            geometry={ element.geometry }
+            material={ dynamicMaterial }
+            castShadow
+            receiveShadow
+        />
     </RigidBody>
 }
 
@@ -74,19 +80,27 @@ function Level({ modelPath, index, instructions = "" })
     }, [ model ])
 
     return <>
+
+        {/* Static body */}
         <RigidBody type="fixed" colliders="trimesh" friction={ 0.75 }>
-            <mesh geometry={ elements.fixed.geometry } castShadow receiveShadow>
-                <meshLambertMaterial dithering shadowSide={ FrontSide } color="#2f2f2f" />
-            </mesh>
+            <mesh
+                geometry={ elements.fixed.geometry }
+                material={ staticMaterial }
+                castShadow
+                receiveShadow
+            />
         </RigidBody>
 
+        {/* Dynamic bodies */}
         { elements.dynamic.map((element, index) => <Dyamic key={ index } element={ element } />) }
 
+        {/* Text */}
         <FloorText
             index={ index }
             instructions={ instructions }
         />
 
+        {/* Good / bad blocks */}
         <Blocks
             goods={ elements.blocksGood }
             bads={ elements.blocksBad }
@@ -99,10 +113,10 @@ export default function Levels()
     const [ levelIndex ] = useGame(state => [ state.levelIndex ])
 
     const settings = [
-        { modelPath: './levels/0.glb', instructions: 'Walk on the blue square' },
-        { modelPath: './levels/1.glb', instructions: 'How about multiple squares?' },
-        { modelPath: './levels/2.glb', instructions: 'That red one looks friendly' },
-        { modelPath: './levels/3.glb', instructions: 'Up you go!' },
+        // { modelPath: './levels/0.glb', instructions: 'Walk on the blue square' },
+        // { modelPath: './levels/1.glb', instructions: 'How about multiple squares?' },
+        // { modelPath: './levels/2.glb', instructions: 'That red one looks friendly' },
+        // { modelPath: './levels/3.glb', instructions: 'Up you go!' },
         { modelPath: './levels/4.glb', instructions: 'I know you like to break stuff' },
         { modelPath: './levels/5.glb', instructions: 'You get the idea' },
         { modelPath: './levels/6.glb', instructions: 'You know you can sprint. Right?' },

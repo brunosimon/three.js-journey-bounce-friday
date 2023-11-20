@@ -21,7 +21,7 @@ export default function Interface()
         { status === 'intro' &&
             <div className="intro">
                 <h1 className="title">Black Friday</h1>
-                <h2 className="sub-title">50% discount!</h2>
+                <h2 className="sub-title">A Three.js Journey event</h2>
                 <div className="description">
                     <p>Finish each level to get one part of the discount code.</p>
                     <p>This game is also a demonstration of what you can do with Three.js and React Three Fiber.</p>
