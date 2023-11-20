@@ -113,10 +113,10 @@ export default function Levels()
     const [ levelIndex ] = useGame(state => [ state.levelIndex ])
 
     const settings = [
-        // { modelPath: './levels/0.glb', instructions: 'Walk on the blue square' },
-        // { modelPath: './levels/1.glb', instructions: 'How about multiple squares?' },
-        // { modelPath: './levels/2.glb', instructions: 'That red one looks friendly' },
-        // { modelPath: './levels/3.glb', instructions: 'Up you go!' },
+        { modelPath: './levels/0.glb', instructions: 'Walk on the blue square' },
+        { modelPath: './levels/1.glb', instructions: 'How about multiple squares?' },
+        { modelPath: './levels/2.glb', instructions: 'That red one looks friendly' },
+        { modelPath: './levels/3.glb', instructions: 'Up you go!' },
         { modelPath: './levels/4.glb', instructions: 'I know you like to break stuff' },
         { modelPath: './levels/5.glb', instructions: 'You get the idea' },
         { modelPath: './levels/6.glb', instructions: 'You know you can sprint. Right?' },

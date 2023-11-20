@@ -21,7 +21,7 @@ export default class OverlayEffect extends Effect
             {
                 // blendFunction: BlendFunction.NORMAL,
                 uniforms: new Map([
-                    [ 'alpha', new Uniform(0) ]
+                    [ 'alpha', new Uniform(1) ]
                 ])
             }
         )

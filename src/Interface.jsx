@@ -7,7 +7,7 @@ export default function Interface()
     
     const onStartClick = (event) =>
     {
-        setStatus('started')
+        setStatus('playing')
         setIsTouch(event.nativeEvent.pointerType === 'touch')
     }
 
