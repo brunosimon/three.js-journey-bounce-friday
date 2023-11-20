@@ -58,7 +58,7 @@ export default function Block({ bad = false, finished = false, onVisited = null,
     {
         const flatDistance = Math.hypot(playerPosition.x - position.x, playerPosition.z - position.z)
         
-        if(flatDistance < 1)
+        if(flatDistance < (bad ? 0.75 : 1))
         {
             const upDistance = playerPosition.y - position.y
             

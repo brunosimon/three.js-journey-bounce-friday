@@ -4,10 +4,15 @@ import Ecctrl from 'ecctrl'
 import { useEffect, useRef } from 'react'
 import useGame from './stores/useGame'
 import { FrontSide } from 'three'
+import * as RAPIER from '@dimforge/rapier3d-compat'
+import { useRapier } from '@react-three/rapier'
 
 export default function Player()
 {
     const ref = useRef()
+    const indicator = useRef()
+
+    const { rapier, world } = useRapier()
 
     const [ playerPosition, playerKey, levelIndex ] = useGame(state => [ state.playerPosition, state.playerKey, state.levelIndex ])
 
@@ -16,10 +21,23 @@ export default function Player()
         if(ref.current)
         {
             const position = ref.current.translation()
+
+            // Reset
             if(position.y < - 6)
                 reset()
 
+            // Store
             playerPosition.copy(position)
+
+            // Indicator
+            const origin = position
+            origin.y -= 0.76
+            const direction = { x: 0, y: - 1, z: 0 }
+            const ray = new rapier.Ray(origin, direction)
+            const hit = world.castRay(ray, 10, true)
+
+            indicator.current.position.copy(position)
+            indicator.current.position.y -= hit ? hit.toi : 1000
         }
     })
 
@@ -54,8 +72,8 @@ export default function Player()
             debug={ false }
             capsuleRadius={ 0.4 }
             
-            camInitDis={ - 20 }
-            camMaxDis={ - 25 }
+            camInitDis={ - 25 }
+            camMaxDis={ - 35 }
 
             camInitDir={{ x: - 0.5, y: Math.PI, z: 0 }}
             camTargetPos={{ x: 0, y: 0, z: 0 }}
@@ -64,14 +82,14 @@ export default function Player()
 
             maxVelLimit={ 5 }
             turnVelMultiplier={ 1 }
-            turnSpeed={ 30 }
+            turnSpeed={ 90 }
             moveImpulsePointY={ 0.2 }
 
             jumpVel={ 7 }
 
             dragDampingC={ 0.15 }
 
-            autoBalance={ false }
+            autoBalance={ true }
 
             camCollisionOffset={ 100 }
         >
@@ -80,5 +98,9 @@ export default function Player()
                 <meshLambertMaterial wireframe={ false } shadowSide={ FrontSide } />
             </mesh>
         </Ecctrl>
+        <mesh ref={ indicator }>
+            <cylinderGeometry args={ [ 0.1, 0.1, 0.02 ] } />
+            <meshBasicMaterial color="#555555" />
+        </mesh>
     </KeyboardControls>
 }

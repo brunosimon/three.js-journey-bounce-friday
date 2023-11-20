@@ -13,7 +13,6 @@ export default forwardRef(function ShockWave({ animateKey = false, color = 'red'
     {
         if(animateKey)
         {
-            console.log('yup')
             material.current.uniforms.outerProgress.value = 0
             material.current.uniforms.radialProgress.value = 0
             ref.current.scale.set(1, 1, 1)

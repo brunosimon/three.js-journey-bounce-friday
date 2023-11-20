@@ -41,6 +41,8 @@ export default function FloorText({ index = 1, instructions = "", position = [ 0
             rotation-x={ - Math.PI * 0.5 }
             fontSize={ 0.5 }
             font="./fonts/saira-stencil-one-v16-latin-regular.woff"
+            maxWidth={ 6 }
+            textAlign="center"
             text={ instructions }
             anchorY="top-cap"
         >

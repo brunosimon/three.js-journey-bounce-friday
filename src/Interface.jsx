@@ -11,11 +11,11 @@ export default function Interface()
         setIsTouch(event.nativeEvent.pointerType === 'touch')
     }
 
-    // Skip
-    useEffect(() =>
-    {
-        setStatus('started')
-    }, [])
+    // // Skip
+    // useEffect(() =>
+    // {
+    //     setStatus('started')
+    // }, [])
 
     return <div className="interface">
         { status === 'intro' &&

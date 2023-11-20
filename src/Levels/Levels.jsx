@@ -34,6 +34,7 @@ function Dyamic({ element })
     return <RigidBody
         ref={ ref }
         position={ element.position }
+        rotation={ element.rotation }
         density={ 0.15 }
         friction={ 0.75 }
         type="dynamic" colliders="cuboid"
@@ -101,14 +102,15 @@ export default function Levels()
         { modelPath: './levels/0.glb', instructions: 'Walk on the blue square' },
         { modelPath: './levels/1.glb', instructions: 'How about multiple squares?' },
         { modelPath: './levels/2.glb', instructions: 'That red one looks friendly' },
-        { modelPath: './levels/3.glb', instructions: 'Let\'s do a little jump' },
-        { modelPath: './levels/4.glb', instructions: 'I mean… Physics…' },
+        { modelPath: './levels/3.glb', instructions: 'Up you go!' },
+        { modelPath: './levels/4.glb', instructions: 'I know you like to break stuff' },
         { modelPath: './levels/5.glb', instructions: 'You get the idea' },
         { modelPath: './levels/6.glb', instructions: 'You know you can sprint. Right?' },
         { modelPath: './levels/7.glb', instructions: 'Huh?' },
         { modelPath: './levels/8.glb', instructions: 'You got this!' },
-        { modelPath: './levels/9.glb', instructions: 'Think' },
-        { modelPath: './levels/10.glb', instructions: 'Parcour!' },
+        { modelPath: './levels/9.glb', instructions: 'Do you like puzzles?' },
+        { modelPath: './levels/10.glb', instructions: 'Don\'t forget to scream "Parkour!"' },
+        { modelPath: './levels/11.glb', instructions: 'Take it slow' },
     ]
 
     const setting = settings[ levelIndex % settings.length ]
