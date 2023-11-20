@@ -14,7 +14,7 @@ export default function Player()
 
     const { rapier, world } = useRapier()
 
-    const [ playerPosition, playerKey, levelIndex ] = useGame(state => [ state.playerPosition, state.playerKey, state.levelIndex ])
+    const [ playerPosition, deathCount, levelIndex, death ] = useGame(state => [ state.playerPosition, state.deathCount, state.levelIndex, state.death ])
 
     useFrame(() =>
     {
@@ -24,7 +24,10 @@ export default function Player()
 
             // Reset
             if(position.y < - 6)
+            {
                 reset()
+                death()
+            }
 
             // Store
             playerPosition.copy(position)
@@ -48,7 +51,7 @@ export default function Player()
         ref.current.setAngvel({ x: 0, y: 0, z: 0 })
     }
 
-    useEffect(reset, [ levelIndex, playerKey ])
+    useEffect(reset, [ levelIndex, deathCount ])
 
     return <KeyboardControls
         map={ [

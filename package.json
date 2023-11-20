@@ -18,6 +18,7 @@
     "@react-three/rapier": "^1.1.2",
     "animejs": "^3.2.1",
     "ecctrl": "^1.0.45",
+    "howler": "^2.2.4",
     "leva": "^0.9.35",
     "r3f-perf": "^7.1.2",
     "react": "18.2",

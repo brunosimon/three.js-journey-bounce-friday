@@ -41,11 +41,25 @@ export default create(subscribeWithSelector((set) =>
         },
 
         playerPosition: new Vector3(0, 1, 0),
-        playerKey: 1,
-        resetPlayer: () =>
-        {
-            set(state => ({ playerKey: state.playerKey + 1 }))
-        }
+        // playerKey: 1,
+        // resetPlayer: () =>
+        // {
+        //     set(state => ({ playerKey: state.playerKey + 1 }))
+        // },
 
+        goodBlockDistance: { value: 999 },
+        badBlockDistance: { value: 999 },
+
+        goodVisitedCount: 0,
+        goodVisited: () =>
+        {
+            set(state => ({ goodVisitedCount: state.goodVisitedCount + 1 }))
+        },
+
+        deathCount: 0,
+        death: () =>
+        {
+            set(state => ({ deathCount: state.deathCount + 1 }))
+        },
     }
 }))

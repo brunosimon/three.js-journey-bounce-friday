@@ -7,7 +7,7 @@ import ShockWave from './ShockWave.jsx'
 
 export default function Block({ bad = false, finished = false, onVisited = null, position = { x: 0, y: 0, z: 0 } })
 {
-    const playerPosition = useGame(state => state.playerPosition)
+    const [ playerPosition ] = useGame(state => [ state.playerPosition ])
     const [ visited, setVisited ] = useState(false)
     const [ animateKey, setAnimateKey ] = useState(0)
     const material = useRef()

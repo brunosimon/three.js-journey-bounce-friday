@@ -6,6 +6,7 @@ import Interface from './Interface.jsx'
 import TouchControls from './TouchControls.jsx'
 import { Leva } from 'leva'
 import useGame from './stores/useGame.jsx'
+import Sounds from './Sounds.jsx'
 
 export default function Application()
 {
@@ -38,5 +39,6 @@ export default function Application()
             </Canvas>
             <Interface />
         </KeyboardControls>
+        <Sounds />
     </>
 }

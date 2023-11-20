@@ -8,7 +8,12 @@ export default function Interface()
     const onStartClick = (event) =>
     {
         setStatus('playing')
-        setIsTouch(event.nativeEvent.pointerType === 'touch')
+        
+    }
+
+    const onTouchStart = () =>
+    {
+        setIsTouch(true)
     }
 
     // // Skip
@@ -26,7 +31,7 @@ export default function Interface()
                     <p>Finish each level to get one part of the discount code.</p>
                     <p>This game is also a demonstration of what you can do with Three.js and React Three Fiber.</p>
                 </div>
-                <button className="start-button" onClick={ onStartClick }>Start</button>
+                <button className="start-button" onTouchStart={ onTouchStart } onClick={ onStartClick }>Start</button>
             </div>
         }
     </div>
