@@ -7,7 +7,7 @@ body,
     left: 0;
     width: 100%;
     height: 100%;
-    background: #000000;
+    background: #0b0b0b;
 }
 
 *
@@ -17,6 +17,10 @@ body,
     box-sizing: border-box;
 }
 
+a
+{
+    color: inherit;
+}
 
 /**
  * Interface
@@ -36,7 +40,7 @@ body,
 /**
  * Intro
  */
-.intro
+.screen
 {
     display: flex;
     flex-direction: column;
@@ -48,30 +52,46 @@ body,
     width: 100%;
     height: 100%;
     padding: 0 10vw;
-    background: #000000;
+    background: #0b0b0b;
     color: #ffffff;
+    transition: opacity 0.5s;
+    opacity: 0;
 }
 
-.intro .description
+.screen.is-visible
+{
+    opacity: 1;
+}
+
+.screen.is-visible a,
+.screen.is-visible button
+{
+    pointer-events: auto;
+}
+
+.screen .description
 {
     font-size: 2vh;
     margin-bottom: 1.5em;
     text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.intro .description p
+.screen .description p
 {
     margin-bottom: 1em;
+    line-height: 1.35em;
 }
 
-.intro .title
+.screen .title
 {
     font-size: 8vh;
     letter-spacing: 0.05em;
     font-family: 'Bebas Neue', sans-serif;
 }
 
-.intro .sub-title
+.screen .sub-title
 {
     margin-bottom: 1em;
     font-size: 4vh;
@@ -79,20 +99,54 @@ body,
     font-family: 'Bebas Neue', sans-serif;
 }
 
-.intro .start-button
+.screen .start-button
 {
+    position: relative;
     background: none;
     color: inherit;
     text-transform: uppercase;
 
     outline: none;
-    border: 2px solid #ffffff;
-    padding: 0.3em 0.6em 0.2em 0.6em;
+    /* border: 2px solid #ffffff; */
+    border: none;
+    height: 8vh;
+    width: 20vh;
+    
+    cursor: pointer;
+}
 
+.screen .start-button .video
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.screen .start-button .video video
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.screen .start-button .label
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /* padding: 0.3em 0.6em 0.2em 0.6em; */
     font-size: 4vh;
     letter-spacing: 0.05em;
     font-family: 'Bebas Neue', sans-serif;
-    
-    cursor: pointer;
-    pointer-events: auto;
+    text-shadow: 0px 0px 12px #000000cc;
 }

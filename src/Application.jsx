@@ -13,7 +13,7 @@ export default function Application()
     const [ status ] = useGame(state => [ state.status ])
 
     return <>
-        <Leva collapsed />
+        <Leva collapsed hidden />
         <KeyboardControls
             map={ [
                 { name: 'forward', keys: [ 'ArrowUp', 'KeyW' ] },

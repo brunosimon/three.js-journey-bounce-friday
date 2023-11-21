@@ -11,7 +11,7 @@ export default function FloorText({ index = 1, instructions = "", position = [ 0
         {/* Lvl */}
         <Text
             material={ brightMaterial }
-            position={ [ 0, 0, - 0.25 ] }
+            position={ [ index >= 10 ? - 0.2 : 0, 0, - 0.25 ] }
             rotation-x={ - Math.PI * 0.5 }
             fontSize={ 0.5 }
             anchorX="right"
@@ -24,7 +24,7 @@ export default function FloorText({ index = 1, instructions = "", position = [ 0
         {/* Number */}
         <Text
             material={ darkMaterial }
-            position={ [ 0, 0, - 0.25 ] }
+            position={ [ index >= 10 ? - 0.2 : 0, 0, - 0.25 ] }
             rotation-x={ - Math.PI * 0.5 }
             anchorX="left"
             anchorY="bottom-baseline"
