@@ -11,6 +11,7 @@ export default function Blocks({ goods = [], bads = [] })
 
     const onBlockVisited = () =>
     {
+        console.log('onBlockVisited')
         goodVisited()
         setVisitedCount((visitedCount) => visitedCount + 1)
     }
@@ -18,6 +19,7 @@ export default function Blocks({ goods = [], bads = [] })
     useEffect(() =>
     {
         let title = ''
+        console.log(visitedCount)
 
         if(visitedCount === totalCount)
         {

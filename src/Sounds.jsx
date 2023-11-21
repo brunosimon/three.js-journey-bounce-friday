@@ -10,6 +10,7 @@ import { Howl, Howler } from 'howler';
 
 export default function Sounds()
 {
+    const [ muted, setMuted ] = useState(false)
     const [ music ] = useState(() => new Howl({
         src: [ './sounds/Clock.mp3' ],
         autoplay: true,
@@ -46,7 +47,7 @@ export default function Sounds()
         preload: true
     }))
     
-    const [ goodBlockDistance, badBlockDistance, goodVisitedCount, deathCount ] = useGame(state => [ state.goodBlockDistance, state.badBlockDistance, state.goodVisitedCount, state.deathCount ])
+    const [ isTouch, goodBlockDistance, badBlockDistance, goodVisitedCount, deathCount ] = useGame(state => [ state.isTouch, state.goodBlockDistance, state.badBlockDistance, state.goodVisitedCount, state.deathCount ])
 
     const [ goodVolume ] = useState(() => ({ value: 0 }))
     const [ badVolume ] = useState(() => ({ value: 0 }))
@@ -97,5 +98,24 @@ export default function Sounds()
             death.play()
     }, [ deathCount ])
 
-    return null
+    useEffect(() =>
+    {
+        Howler.mute(muted)
+    }, [ muted ])
+
+    return <button className={ `sound ${ isTouch ? 'is-touch' : '' } ${ muted ? 'is-muted' : '' }` } onClick={ () => setMuted(!muted) }>
+        <span className="base"></span>
+        <span className="lines">
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
+        </span>
+    </button>
 }

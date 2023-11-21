@@ -54,6 +54,23 @@ export default function Block({ bad = false, finished = false, onVisited = null,
             shockWave.current.material.uniforms.color.value.copy(material.current.color)
     }, [ finished, visited, settings ])
 
+    useEffect(() =>
+    {
+        setAnimateKey(animateKey => animateKey + 1)
+        if(visited)
+        {
+            onVisited()
+
+            if(bad)
+            {
+                requestAnimationFrame(() =>
+                {
+                    setVisited(false)
+                })
+            }
+        }
+    }, [ visited ])
+
     useFrame(() =>
     {
         const flatDistance = Math.hypot(playerPosition.x - position.x, playerPosition.z - position.z)
@@ -64,17 +81,7 @@ export default function Block({ bad = false, finished = false, onVisited = null,
             
             if(upDistance > 0 && upDistance < 1.5)
             {
-                if(bad)
-                {
-                    onVisited()
-                    setAnimateKey(animateKey => animateKey + 1)
-                }
-                else if(!visited)
-                {
-                    onVisited()
-                    setAnimateKey(animateKey => animateKey + 1)
-                    setVisited(true)
-                }
+                setVisited(true)
             }
         }
     })

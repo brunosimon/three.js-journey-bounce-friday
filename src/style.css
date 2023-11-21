@@ -56,6 +56,7 @@ a
     color: #ffffff;
     transition: opacity 0.5s;
     opacity: 0;
+    text-align: center;
 }
 
 .screen.is-visible
@@ -89,6 +90,7 @@ a
     font-size: 8vh;
     letter-spacing: 0.05em;
     font-family: 'Bebas Neue', sans-serif;
+    text-shadow: 0 0 20px #ffffff55;
 }
 
 .screen .sub-title
@@ -97,6 +99,7 @@ a
     font-size: 4vh;
     letter-spacing: 0.05em;
     font-family: 'Bebas Neue', sans-serif;
+    text-shadow: 0 0 20px #ffffff55;
 }
 
 .screen .start-button
@@ -113,6 +116,9 @@ a
     width: 20vh;
     
     cursor: pointer;
+    box-shadow: 0 0 30px #8c64ffa1;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .screen .start-button .video
@@ -144,9 +150,85 @@ a
     right: 0;
     width: 100%;
     height: 100%;
-    /* padding: 0.3em 0.6em 0.2em 0.6em; */
     font-size: 4vh;
     letter-spacing: 0.05em;
     font-family: 'Bebas Neue', sans-serif;
     text-shadow: 0px 0px 12px #000000cc;
+}
+
+/**
+ * Sound
+ */
+.sound
+{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 60px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.sound.is-touch
+{
+    bottom: auto;
+    top: 20px;
+}
+
+.sound *
+{
+    display: block;
+}
+
+.sound .base
+{
+    position: absolute;
+    bottom: 10px;
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 2px;
+    background: #ffffff;
+}
+
+.sound .lines
+{
+    position: absolute;
+    bottom: 12px;
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.sound .lines .line
+{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 2px;
+    height: 50%;
+    background: #ffffff;
+    animation: line-animation 2s infinite linear;
+}
+
+.sound .lines .line:nth-child(1)  { height: 10px; left: 0%;  animation-duration: 3.6s; }
+.sound .lines .line:nth-child(2)  { height: 12px; left: 10%; animation-duration: 2.8s; }
+.sound .lines .line:nth-child(3)  { height: 14px; left: 20%; animation-duration: 4.4s; }
+.sound .lines .line:nth-child(4)  { height: 16px; left: 30%; animation-duration: 3.2s; }
+.sound .lines .line:nth-child(5)  { height: 18px; left: 40%; animation-duration: 5.6s; }
+.sound .lines .line:nth-child(6)  { height: 20px; left: 50%; animation-duration: 4.0s; }
+.sound .lines .line:nth-child(7)  { height: 22px; left: 60%; animation-duration: 2.0s; }
+.sound .lines .line:nth-child(8)  { height: 28px; left: 70%; animation-duration: 5.2s; }
+.sound .lines .line:nth-child(9)  { height: 24px; left: 80%; animation-duration: 2.4s; }
+.sound .lines .line:nth-child(10) { height: 26px; left: 90%; animation-duration: 4.8s; }
+
+.sound.is-muted .lines .line { animation-play-state: paused; }
+
+@keyframes line-animation
+{
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-200%) scaleY(0); }
 }

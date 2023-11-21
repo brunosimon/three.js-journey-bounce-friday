@@ -35,7 +35,6 @@ export default create(subscribeWithSelector((set) =>
         levelIndex: 0,
         start: () =>
         {
-            console.log('start')
             set(state => ({
                 status: 'playing',
                 levelIndex: 0,
@@ -43,7 +42,6 @@ export default create(subscribeWithSelector((set) =>
         },
         finishLevel: () =>
         {
-            console.log('finishLevel')
             set(state => ({ status: 'finishing' }))
 
             setTimeout(() =>
