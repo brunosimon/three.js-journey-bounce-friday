@@ -39,6 +39,6 @@ export default function Application()
             </Canvas>
             <Interface />
         </KeyboardControls>
-        <Sounds />
+        { status !== 'intro' && <Sounds /> }
     </>
 }
