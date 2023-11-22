@@ -1,14 +1,22 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import useGame from './stores/useGame.jsx'
 
 export default function Interface()
 {
+    const startButton = useRef()
+    const restartButton = useRef()
     const [ status, start, setIsTouch ] = useGame(state => [ state.status, state.start, state.setIsTouch ])
     
-    const onStartClick = (event) =>
+    const onStartClick = (event, data) =>
     {
-        if(status === 'intro' || status === 'outro')
-            start()
+        start()
+        startButton.current.blur()
+    }
+    
+    const onRestartClick = (event, data) =>
+    {
+        start()
+        restartButton.current.blur()
     }
 
     const onTouchStart = () =>
@@ -32,7 +40,7 @@ export default function Interface()
                 <p><a href="https://threejs-journey.com" target="_blank">Three.js Journey</a> is currently <a href="https://threejs-journey.com" target="_blank">50% off</a> for Black Friday!</p>
                 <p>To celebrate and demonstrate what can be built with Three.js, here's a little platform game.</p>
             </div>
-            <button className="start-button" onTouchStart={ onTouchStart } onClick={ onStartClick }>
+            <button ref={ startButton } className="start-button" onTouchStart={ onTouchStart } onClick={ onStartClick }>
                 <div className="video">
                     <video src="./videos/button-preview.mp4" muted autoPlay loop />
                 </div>
@@ -49,7 +57,7 @@ export default function Interface()
                 <p>Want to learn how to create this kind of experience?<br/>Join <a href="https://threejs-journey.com" target="_blank">Three.js Journey</a>.</p>
                 <p>Currently <a href="https://threejs-journey.com" target="_blank">50% off</a>!</p>
             </div>
-            <button className="start-button" onTouchStart={ onTouchStart } onClick={ onStartClick }>
+            <button ref={ restartButton } className="start-button" onClick={ onRestartClick }>
                 <div className="video">
                     <video src="./videos/button-preview.mp4" muted autoPlay loop />
                 </div>

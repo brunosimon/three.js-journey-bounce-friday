@@ -103,7 +103,15 @@ export default function Sounds()
         Howler.mute(muted)
     }, [ muted ])
 
-    return <button className={ `sound ${ isTouch ? 'is-touch' : '' } ${ muted ? 'is-muted' : '' }` } onClick={ () => setMuted(!muted) }>
+    const button = useRef()
+
+    const onClick = () =>
+    {
+        setMuted(!muted)
+        button.current.blur()
+    }
+
+    return <button ref={ button } className={ `sound ${ isTouch ? 'is-touch' : '' } ${ muted ? 'is-muted' : '' }` } onClick={ onClick }>
         <span className="base"></span>
         <span className="lines">
             <span className="line"></span>
