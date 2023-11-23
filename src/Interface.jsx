@@ -27,13 +27,17 @@ export default function Interface()
     
         {/* Intro / outro */}
         <div className={ `screen intro ${ status === 'intro' || status === 'outro' ? 'is-visible' : '' }` }>
-            <h1 className="title">Black Friday</h1>
-            <h2 className="sub-title">A <a href="https://threejs-journey.com" target="_blank">Three.js Journey</a> game by <a href="https://bruno-simon.com" target="_blank">Bruno Simon</a></h2>
+            <h1 className="title">Bounce Friday</h1>
+            <h2 className="sub-title">A <a href="https://threejs-journey.com" target="_blank">Three.js Journey</a> game by <a href="https://bruno-simon.com" target="_blank">Bruno Simon</a> for BLACK FRIDAY</h2>
             <div className="description">
                 <div className="side is-left">
                     <div className="sub-title">Presentation</div>
-                    <p>In just a few days, this platform game was created to demonstrate what can be built with <a href="https://threejs.org/" target="_blank">Three.js</a>.</p>
-                    <p>Interested in learning how to create this type of experience?<br /><a href="https://threejs-journey.com" target="_blank">Three.js Journey</a> is the course you need<br />(currently <a href="https://threejs-journey.com" target="_blank">50% off</a> for <a href="https://threejs-journey.com" target="_blank">Black Friday</a>!)</p>
+                    <p>This platform game was created in less than 24 hours to demonstrate what can be built with Three.js.</p>
+                    <p>
+                        Interested in learning how to create this type of experience?
+                        <br /><a href="https://threejs-journey.com" target="_blank">Three.js Journey</a> is the most complete course you need!
+                    </p>
+                    <p>Get <a class="highlight" href="https://threejs-journey.com" target="_blank">50% OFF</a> today for <a href="https://threejs-journey.com" target="_blank">Black Friday</a>!</p>
                 </div>
                 <div className="side is-right">
                     <div className="sub-title">Credits</div>

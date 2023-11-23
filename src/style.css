@@ -75,6 +75,13 @@ a
     color: #ffffff;
 }
 
+
+.screen .highlight
+{
+    font-weight: bold;
+    text-shadow: 0 0 13px #00fff8;
+}
+
 .screen .title
 {
     font-size: 12vh;
